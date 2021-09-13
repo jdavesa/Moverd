@@ -5,19 +5,33 @@ document.addEventListener(
   },
   false
 )
-let colorParalel = "#2EFF00"
-let colorCiutatVella= "#C1FF00"
-let colorPoblenou= "#C1FF00"
 
 
+
+
+/* 
+de 0 a 5 = #00cd67
+
+de 10 a 20 = #42d94c
+
+de 20 a 30 = #80e534
+
+de 30 a 40 = #c3f118
+
+de 40 a 50 = #fffc00
+*/
 
 
 //GOOGLE MAPS INIT/////////////
 
+
+
 google.maps.event.addDomListener(window, 'load', init);
 
-
+let n1=45
    
+
+
 function init(){
 
   var map = new google.maps.Map(document.getElementById('map'), {
@@ -36,6 +50,12 @@ function init(){
     { lat: 41.375065, lng: 2.149195 },
 
   ];
+
+  if(n1 >= 0 && n1 <10){colorParalel = '#00cd67'}
+  else if(n1 >= 10 && n1 <20){colorParalel = '#42d94c'}
+  else if(n1 >= 20 && n1 <30){colorParalel = '#80e534'}
+  else if(n1 >= 30 && n1 <40){colorParalel = '#c3f118'}
+  else if(n1 >= 40 && n1 <=50){colorParalel = '#fffc00'}
 
   const areaParalel = new google.maps.Polygon({
     paths: paralelCoords,
@@ -96,3 +116,7 @@ function init(){
 
 
 }
+
+
+
+

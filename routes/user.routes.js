@@ -1,7 +1,12 @@
 const router = require("express").Router();
 const User = require("../models/User.model")
+
 const APIHandler = require("../public/js/APIHandler")
 const apiPoblenou = new APIHandler(41.406450, 2.205496)
+const apiCiutatVella = new APIHandler(41.381536, 2.175636)
+const apiParalel = new APIHandler(41.407566, 2.104670)
+
+
 const bcryptjs = require('bcryptjs');
 const saltRounds = 10;
 
@@ -25,8 +30,10 @@ router.post('/signup', (req, res, next)=>{
             return User.create({firstName, lastName, email, username, password : hashedPassword})
             
         })
-        .then(data =>{console.log('A new user has been created:', data)
-            res.redirect('/user-page')})
+        .then(userOne =>{console.log('A new user has been created:', userOne)
+            req.session.currentUser = userOne    
+            
+            res.render('user/user-page',{userOne})})
         .catch(err => next(err))
 })
 
@@ -50,6 +57,7 @@ router.post('/user-page',(req,res,next)=>{
         {
             
             req.session.currentUser = userOne
+            
             res.render('user/user-page',{userOne})
         } else {
             res.redirect('/login')
@@ -70,7 +78,8 @@ router.post('/logout', (req, res, next) => {
 
 router.get('/user-page',isLoggedIn,(req,res)=>{
     const userOne = req.session.currentUser
-    apiPoblenou.getAirQuality()
+    /* apiPoblenou.getAirQuality() */
+    
     res.render('user/user-page',{userOne})})
 
 
