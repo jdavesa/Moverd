@@ -1,0 +1,147 @@
+body {
+  padding: 0;
+  margin: 0;
+  font-family: helvetica, arial, sans-serif;
+  font-size: 14px
+}
+
+a {
+  color: #00b7ff;
+}
+
+h1 {
+  color: 15px;
+}
+
+.hide{
+  display: none;
+}
+
+/* LAYOUT----------------------------------------*/
+.navbar{
+  display: flex;
+  justify-content: space-evenly;
+  align-items:flex-end;
+  border-bottom: 1px solid rgb(166, 221, 90);
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.181);
+  height:80px;
+  padding-bottom: 10px
+}
+.navbar div{
+  width: 30%;
+  text-align: center
+}
+
+.navbar div a{
+  text-decoration: none;
+  color: rgb(166, 221, 90);
+  font-size: 1rem;
+  margin-right: 20px;
+  font-weight: 700;
+}
+
+.navbar div img{
+  width: 40%;
+}
+
+
+/* SIGNUP----------------------------------------*/
+
+
+.signupContainer{
+  background-color: none;
+  width: 500px;
+  margin: auto;
+}
+
+.signup{
+  display: flex;
+  flex-direction: column;
+
+}
+
+
+
+
+
+
+/* INDEX----------------------------------------*/
+
+.index-container{
+  height: 100%;
+  width: 100%;
+  background: rgb(255,255,255);
+  background: linear-gradient(0deg, rgba(255,255,255,1) 50%, rgba(166,221,90,1) 100%);
+  padding-top: 150px
+ 
+}
+
+.index-container div{
+  width: 25%;
+  margin: auto;
+}
+
+.index-container div h1{
+  font-size: 5rem;
+  color: rgb(58, 58, 58)
+}
+
+
+/* USER_PAGE----------------------------------------*/
+
+.user-container{
+  display: flex;
+}
+
+.info-container{
+  width: 200px;
+  height: 400px;
+  background-color: white;
+  border-radius: 20px;
+  border: 1px solid rgb(166, 221, 90);
+  margin: 100px;
+
+}
+
+.foto-container{
+  width: 150px;
+  height: 150px;
+  border-radius: 75px;
+  margin: auto;
+  margin-top: 20px;
+  background-color: white;
+  overflow: hidden;
+  position: relative;
+  border: 2px solid rgb(166, 221, 90);
+
+
+}
+
+.foto-container img{
+  width: 100%;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+
+}
+
+.user-info{
+  text-align: center;
+}
+
+.user-info h3{
+  color: rgb(166, 221, 90);
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+
+
+#map {
+  width: 500px;
+  height: 500px;
+  border-radius: 10px;
+  margin-top: 100px;
+}

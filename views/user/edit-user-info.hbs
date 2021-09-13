@@ -1,0 +1,29 @@
+
+<div class="signupContainer">
+  <h1>User Info</h1>
+<form class="signup" action="/user-update" method="post">
+  <h2>First Name:</h2>
+    <input type="text" name="firstName" value={{userOne.firstName}}  />
+ 
+  <h2>Last Name:</h2>
+    <input type="text" name="lastName" value={{userOne.lastName}}  />
+
+  <h2>eMail:</h2>
+    <input type="text" name="email"  value={{userOne.email}} />
+
+
+  <h2>Username:</h2>
+    <input type="text" name="username" value={{userOne.username}} />
+
+    <h2>Avatar:</h2>
+    <input type="text" name="avatarUrl" placeholder="url" value={{userOne.avatarUrl}} />
+
+
+  
+
+  
+ 
+  <button>Save changes</button>
+</form>
+
+</div>
