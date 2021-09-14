@@ -2,9 +2,13 @@ const router = require("express").Router();
 const User = require("../models/User.model")
 
 const APIHandler = require("../public/js/APIHandler")
-const apiPoblenou = new APIHandler(41.406450, 2.205496)
-const apiCiutatVella = new APIHandler(41.381536, 2.175636)
-const apiParalel = new APIHandler(41.407566, 2.104670)
+const apiParalel = new APIHandler(41.357233, 2.145260)
+const apiPoblenou = new APIHandler(41.406594, 2.208730)
+const apiCiutatVella = new APIHandler(41.378796, 2.171962)
+const apiEixample = new APIHandler(41.391308, 2.146699)
+const apiSagrada = new APIHandler(41.411345, 2.165699)
+const apiPastor = new APIHandler(41.449040, 2.192275)
+
 
 
 
@@ -58,6 +62,16 @@ router.post('/user-page',(req,res,next)=>{
         {
             
             req.session.currentUser = userOne
+
+            /* let signupButton = document.getElementById('button-menu-signup')
+            let loginButton = document.getElementById('button-menu-login')
+            let userButton = document.getElementById('button-menu-user')
+            let logoutButton = document.getElementById('button-menu-logout')
+
+            signupButton.classList.add('class','hide')
+            loginButton.classList.add('class','hide')
+            userButton.removeAttribute('class','hide')
+            logoutButton.removeAttribute('class','hide') */
             
             res.render('user/user-page',{userOne})
         } else {
@@ -69,7 +83,7 @@ router.post('/user-page',(req,res,next)=>{
 
 
 
-router.post('/logout', (req, res, next) => {
+router.get('/logout', (req, res, next) => {
   req.session.destroy(err => {
     if (err) next(err);
     res.redirect('/');
@@ -80,7 +94,8 @@ router.post('/logout', (req, res, next) => {
 router.get('/user-page',isLoggedIn,(req,res)=>{
     
     const userOne = req.session.currentUser
-    const resultArr = []
+    res.render('user/user-page',{userOne})
+/*     const resultArr = []
 
     apiParalel.getAirQuality().then(response => {
      
@@ -121,14 +136,56 @@ router.get('/user-page',isLoggedIn,(req,res)=>{
             resultArr[2] = result3
             return resultArr
          
+    }).then((resultArr)=>{
+        apiEixample.getAirQuality().then(response => {
+     
+            let pm10 = (response.data.list[0].components.pm10)*100/20
+            let pm25 = (response.data.list[0].components.pm2_5)*100/10
+            let o3 = (response.data.list[0].components.o3)*100/80
+            let no2 = (response.data.list[0].components.no2)*100/40
+            
+           
+            const result4 = (((pm10+pm25+o3+no2)/4)*0.5)
+            resultArr[3] = result4
+            return resultArr
+         
+    }).then((resultArr)=>{
+        apiSagrada.getAirQuality().then(response => {
+     
+            let pm10 = (response.data.list[0].components.pm10)*100/20
+            let pm25 = (response.data.list[0].components.pm2_5)*100/10
+            let o3 = (response.data.list[0].components.o3)*100/80
+            let no2 = (response.data.list[0].components.no2)*100/40
+            
+           
+            const result5 = (((pm10+pm25+o3+no2)/4)*0.5)
+            resultArr[4] = result5
+            return resultArr
+         
+    }).then((resultArr)=>{
+        apiPastor.getAirQuality().then(response => {
+     
+            let pm10 = (response.data.list[0].components.pm10)*100/20
+            let pm25 = (response.data.list[0].components.pm2_5)*100/10
+            let o3 = (response.data.list[0].components.o3)*100/80
+            let no2 = (response.data.list[0].components.no2)*100/40
+            
+           
+            const result6 = (((pm10+pm25+o3+no2)/4)*0.5)
+            resultArr[5] = result6
+            return resultArr
+         
     }).then((resultArr) => {
         console.log(resultArr)
 
         res.render('user/user-page',{userOne, resultArr})
     })
     
-    })
-    })
+})
+})
+})
+})
+}) */
 })
 
 

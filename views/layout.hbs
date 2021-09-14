@@ -8,25 +8,21 @@
       <title>{{title}}</title>
       <link rel="stylesheet" href="/stylesheets/style.css" />
       <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCO6vMEzrsXbc43qNmIEzbkTrV7nwhEf_Q&callback=initMap&libraries=&v=weekly"></script>
-      
-   </head>
+      <script type="text/javascript"></script>
 
    <body>
 
       <div class="navbar">
-         <div>
-         <a href="/"><img src="images/moverd-logo.png"></a>
+         <div class="logo-container">
+         <a href="/"><img src="images/logo-moverd.png"></a>
          </div>
          <div>
             
-            <a id='signup-button' href="/signup">Signup</a> <span></span>
-            <a id='login-button' href="/login">Login</a> 
-            <a id='user-button' href="/user-page">User</a> 
          </div>
-         <div>
-         <form id="logout-form" action="/logout" method="POST">
-            <button>Logout</button>
-         </form>
+         <div class="menu-buttons">
+            <a id="button-menu-signup" href="/signup">Signup</a> <span></span>
+            <a id="button-menu-login" href="/login">Login</a> 
+            <a id="button-menu-user" class="hide" href="/user-page">User</a> 
          </div>
       </div>
       

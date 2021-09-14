@@ -22,26 +22,42 @@ h1 {
   display: flex;
   justify-content: space-evenly;
   align-items:flex-end;
-  border-bottom: 1px solid rgb(166, 221, 90);
+  border-bottom: 3px solid rgb(68, 184, 78);
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.181);
   height:80px;
-  padding-bottom: 10px
+  padding-bottom: 20px
 }
 .navbar div{
   width: 30%;
-  text-align: center
+  text-align: center;
+  
 }
 
-.navbar div a{
+.logo-container{
+  width: 30%;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  
+}
+
+
+
+.menu-buttons a{
   text-decoration: none;
-  color: rgb(166, 221, 90);
+  color: rgb(68, 184, 78);
   font-size: 1rem;
   margin-right: 20px;
+  background-color: none;
   font-weight: 700;
 }
 
 .navbar div img{
-  width: 40%;
+  width: 200px;
+  position:absolute;
+  top: 30px;
+  left: 100px;
+  padding: 0;
 }
 
 
@@ -71,7 +87,7 @@ h1 {
   height: 100%;
   width: 100%;
   background: rgb(255,255,255);
-  background: linear-gradient(0deg, rgba(255,255,255,1) 50%, rgba(166,221,90,1) 100%);
+  background: linear-gradient(0deg, rgba(255,255,255,1) 50%, rgb(68, 184, 78) 100%);
   padding-top: 150px
  
 }
@@ -89,18 +105,27 @@ h1 {
 
 /* USER_PAGE----------------------------------------*/
 
-.user-container{
+/* .user-container{
   display: flex;
-}
+} */
 
 .info-container{
   width: 200px;
-  height: 400px;
+  height: 700px;
   background-color: white;
-  border-radius: 20px;
-  border: 1px solid rgb(166, 221, 90);
-  margin: 100px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.438);
+  position: absolute;
+  right: 10px;
+  margin-top: 10px;
+  top: 20px;
+  z-index: 1;
+  transition: 0.7s;
 
+}
+
+.info-container:hover{
+  transform: scale(1.02)
 }
 
 .foto-container{
@@ -112,8 +137,6 @@ h1 {
   background-color: white;
   overflow: hidden;
   position: relative;
-  border: 2px solid rgb(166, 221, 90);
-
 
 }
 
@@ -132,7 +155,7 @@ h1 {
 }
 
 .user-info h3{
-  color: rgb(166, 221, 90);
+  color: rgb(68, 184, 78);
   font-weight: 600;
   font-size: 1.2rem;
 }
@@ -140,8 +163,10 @@ h1 {
 
 
 #map {
-  width: 500px;
-  height: 500px;
-  border-radius: 10px;
-  margin-top: 100px;
+  width: 100vw;
+  height: 90vh;
+  display: inline-block;
+  z-index: 0;
+
+  
 }

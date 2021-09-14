@@ -1,21 +1,27 @@
-<div class="user-container">
+
 <div class="info-container">
   <div class="foto-container">
     <img src={{userOne.avatarUrl}}>
   </div>
   <div class="user-info">
     <h3>{{userOne.username}}</h3>
+    <h4>{{userOne.email}}</h4>
     <form action="/user-info" method="post">
     <button>See and modify info</button>
     </form>
-  </div>
-  
+    <a id="button-menu-logout" {{!-- class="hide" --}} href="/logout">Logout</a> 
+  </div>  
 </div>
+
 <div id="map"></div>
-<ul>
+
+<ul class = 'hide'>
   <li id="n1">{{resultArr.[0]}}</li>
   <li id="n2">{{resultArr.[1]}}</li>
   <li id="n3">{{resultArr.[2]}}</li>
+  <li id="n4">{{resultArr.[3]}}</li>
+  <li id="n5">{{resultArr.[4]}}</li>
+  <li id="n6">{{resultArr.[5]}}</li>
 </ul>
 </div>
 
