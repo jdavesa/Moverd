@@ -7,6 +7,7 @@ const apiCiutatVella = new APIHandler(41.381536, 2.175636)
 const apiParalel = new APIHandler(41.407566, 2.104670)
 
 
+
 const bcryptjs = require('bcryptjs');
 const saltRounds = 10;
 
@@ -77,10 +78,58 @@ router.post('/logout', (req, res, next) => {
 
 
 router.get('/user-page',isLoggedIn,(req,res)=>{
-    const userOne = req.session.currentUser
-    /* apiPoblenou.getAirQuality() */
     
-    res.render('user/user-page',{userOne})})
+    const userOne = req.session.currentUser
+    const resultArr = []
+
+    apiParalel.getAirQuality().then(response => {
+     
+        let pm10 = (response.data.list[0].components.pm10)*100/20
+        let pm25 = (response.data.list[0].components.pm2_5)*100/10
+        let o3 = (response.data.list[0].components.o3)*100/80
+        let no2 = (response.data.list[0].components.no2)*100/40
+        
+       
+         let result1 = (((pm10+pm25+o3+no2)/4)*0.5)
+         resultArr[0] = result1
+         return resultArr
+      
+  
+    }).then((resultArr)=>{
+        apiCiutatVella.getAirQuality().then(response => {
+     
+            let pm10 = (response.data.list[0].components.pm10)*100/20
+            let pm25 = (response.data.list[0].components.pm2_5)*100/10
+            let o3 = (response.data.list[0].components.o3)*100/80
+            let no2 = (response.data.list[0].components.no2)*100/40
+            
+           
+            let result2 = (((pm10+pm25+o3+no2)/4)*0.5)
+            resultArr[1] = result2
+            return resultArr
+         
+    }).then((resultArr)=>{
+        apiPoblenou.getAirQuality().then(response => {
+     
+            let pm10 = (response.data.list[0].components.pm10)*100/20
+            let pm25 = (response.data.list[0].components.pm2_5)*100/10
+            let o3 = (response.data.list[0].components.o3)*100/80
+            let no2 = (response.data.list[0].components.no2)*100/40
+            
+           
+            const result3 = (((pm10+pm25+o3+no2)/4)*0.5)
+            resultArr[2] = result3
+            return resultArr
+         
+    }).then((resultArr) => {
+        console.log(resultArr)
+
+        res.render('user/user-page',{userOne, resultArr})
+    })
+    
+    })
+    })
+})
 
 
 router.get('/user-info',isLoggedIn,(req,res)=>{
