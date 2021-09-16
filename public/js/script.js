@@ -11,23 +11,26 @@
 //GOOGLE MAPS INIT/////////////
 
 
-
-
+let ou = document.getElementById('marca')
 
 google.maps.event.addDomListener(window, 'load', init);
 
-let n1 = document.getElementById("n1").innerText
-let n2 = document.getElementById("n2").innerText
-let n3 = document.getElementById("n3").innerText
-let n4 = document.getElementById("n4").innerText
-let n5 = document.getElementById("n5").innerText
-let n6 = document.getElementById("n6").innerText
+let n1 = Math.round(document.getElementById("n1").innerText)
+let n2 = Math.round(document.getElementById("n2").innerText)
+let n3 = Math.round(document.getElementById("n3").innerText)
+let n4 = Math.round(document.getElementById("n4").innerText)
+let n5 = Math.round(document.getElementById("n5").innerText)
+let n6 = Math.round(document.getElementById("n6").innerText)
+let n7 = Math.round(document.getElementById("n7").innerText)
+let n8 = Math.round(document.getElementById("n8").innerText)
+let n9 = Math.round(document.getElementById("n9").innerText)
+let n10 = Math.round(document.getElementById("n10").innerText)
 
+let markers=[]
 
 function init(){
 
-
-  var map = new google.maps.Map(document.getElementById('map'), {
+  const map = new google.maps.Map(document.getElementById('map'), {
     center: { lat: 41.380, lng: 2.174 },
     scrollwheel: true,
     disableDefaultUI: true,
@@ -264,6 +267,45 @@ function init(){
   ]
   });
 
+  console.log('Map init')
+
+  const drawingManager = new google.maps.drawing.DrawingManager({
+    drawingControl: true,
+    drawingControlOptions: {
+      position: google.maps.ControlPosition.BOTTOM_CENTER,
+      drawingModes: [
+        google.maps.drawing.OverlayType.MARKER,
+        google.maps.drawing.OverlayType.POLYGON,
+        google.maps.drawing.OverlayType.POLYLINE,
+
+      ],
+    },
+
+
+    markerOptions: {
+        icon: "../images/running-logo.png",
+        draggable: true,
+        opacity: 0.8,
+    },
+    polygonOptions: {
+        fillColor: "#00cd67",
+        fillOpacity: 0.4,
+        strokeWeight: 1,
+        strokeColor: "#00cd67",
+        clickable: true,
+        editable: false,
+        zIndex: 1,
+     },
+    polylineOptions: {
+        strokeColor: "dodgerBlue",
+        editable: true,
+    }
+  });
+
+  drawingManager.setMap(map);
+
+  //Set the colors --------////
+
   function colorLevel(n){
     if(n >= 0 && n <10){return '#00cd67'}
     else if(n >= 10 && n <20){return '#42d94c'}
@@ -294,7 +336,7 @@ function init(){
 
   areaParalel.setMap(map)
 
-  const contentString = "<h1>"+n1+"</h1>";
+  const contentString = "<h1 class='aqi'>"+n1+"</h1>";
 
   const infowindow = new google.maps.InfoWindow({
     content: contentString,
@@ -319,7 +361,7 @@ function init(){
     infowindow.open({
       anchor: marker,
       map,
-      shouldFocus: false,
+      shouldFocus: true,
     });
   });
 
@@ -344,6 +386,35 @@ function init(){
   });
 
   areaCiutatVella.setMap(map)
+
+ /*  const contentString = "<h1 class='aqi'>"+n2+"</h1>";
+
+  const infowindow2 = new google.maps.InfoWindow({
+    content: contentString,
+  });
+  const marker2 = new google.maps.Marker({
+    position:  {lat: 41.378796, lng: 2.171962},
+    icon: {
+      path: google.maps.SymbolPath.CIRCLE,
+      fillColor: 'whiteSmoke',
+      fillOpacity: 0.6,
+      strokeColor: 'darkSlateGrey',
+      strokeWeight: 1,
+      rotation: 0,
+      scale: 7,
+   
+      },
+      draggable: true,
+      map: map,
+  });
+
+  areaCiutatVella.addListener("click", () => {
+    infowindow.open({
+      anchor: marker2,
+      map,
+      shouldFocus: true,
+    });
+  }); */
 
   //POBLENOU---------------------//
 
@@ -423,7 +494,7 @@ function init(){
 
   areaEixample.setMap(map)
 
-  //EIXAMPLE---------------------//
+  //SAGRADA---------------------//
 
   const sagradaCoords = [
 
@@ -456,7 +527,7 @@ function init(){
   areaSagrada.setMap(map)
 
 
-  //EIXAMPLE---------------------//
+  //PASTOR---------------------//
 
   const pastorCoords = [
 
@@ -485,11 +556,140 @@ function init(){
 
   areaPastor.setMap(map)
 
+  //GUINARDO---------------------//
+
+  const guinardoCoords = [
+
+   
+    { lat:  41.443414, lng: 2.144267 },
+    { lat: 41.412541, lng: 2.159416 },
+    { lat: 41.411763, lng: 2.165252 },
+    { lat: 41.418360, lng: 2.176155 },
+    { lat: 41.431805, lng: 2.177433 },
+    { lat: 41.434030, lng: 2.179341 },
+    { lat: 41.439536, lng: 2.181951 },
+    { lat: 41.443318, lng: 2.186519 },
+    { lat: 41.456455, lng: 2.188523 },
+   
+ 
+   
+  
+  ];
+
+  const areaGuinardo = new google.maps.Polygon({
+    paths: guinardoCoords,
+    strokeColor: colorLevel(n7),
+    strokeOpacity: 0.8,
+    strokeWeight: 1,
+    fillColor: colorLevel(n7),
+    fillOpacity: 0.40,
+  });
+
+  areaGuinardo.setMap(map)
+
+   //SARRIA---------------------//
+
+   const sarriaCoords = [
+
+    { lat:  41.443414, lng: 2.144267 },
+    { lat: 41.412541, lng: 2.159416 },
+    { lat: 41.406764, lng: 2.149538 },
+    { lat: 41.400608, lng: 2.151046 },
+    { lat: 41.395584, lng: 2.155636 },
+    { lat: 41.388271, lng: 2.127233 },
+    { lat: 41.398016, lng: 2.126429 },
+    { lat: 41.408850, lng: 2.110353 }, 
+  
+  ];
+
+  const areaSarria = new google.maps.Polygon({
+    paths: sarriaCoords,
+    strokeColor: colorLevel(n8),
+    strokeOpacity: 0.8,
+    strokeWeight: 1,
+    fillColor: colorLevel(n8),
+    fillOpacity: 0.40,
+  });
+
+  areaSarria.setMap(map)
+
+  
+  //LES-CORTS---------------------//
+
+    const cortsCoords = [
+ 
+    { lat: 41.388271, lng: 2.127233 },
+    { lat: 41.398016, lng: 2.126429 },
+    { lat: 41.408850, lng: 2.110353 },
+    { lat: 41.394443, lng: 2.100428 },
+    { lat: 41.382059, lng: 2.101535 }, 
+    { lat: 41.376919, lng: 2.096325 }, 
+    { lat: 41.375229, lng: 2.149359 },
+    { lat: 41.380874, lng:  2.142073 }, 
+    { lat: 41.392795, lng:  2.144557 }, 
+  
+  ];
+
+  const areaCorts = new google.maps.Polygon({
+    paths: cortsCoords,
+    strokeColor: colorLevel(n9),
+    strokeOpacity: 0.8,
+    strokeWeight: 1,
+    fillColor: colorLevel(n9),
+    fillOpacity: 0.40,
+  });
+
+  areaCorts.setMap(map)
+
+    //SANTS---------------------//
+
+    const santsCoords = [
+
+    { lat: 41.375229, lng: 2.149359 },
+    { lat: 41.364727, lng: 2.135442 }, 
+    { lat: 41.376035, lng: 2.121735 }, 
+  
+    ];
+
+  const areaSants = new google.maps.Polygon({
+    paths: santsCoords,
+    strokeColor: colorLevel(n10),
+    strokeOpacity: 0.8,
+    strokeWeight: 1,
+    fillColor: colorLevel(n10),
+    fillOpacity: 0.40,
+  });
+
+  areaSants.setMap(map)
+
+
+
+  
+
+
+  ou.addEventListener("click", (event) => {
+
+    addMarker(event.latLng)
+    console.log('hola')
+    
+    console.log('markers[0].position.lat')})
+ 
+
+    function addMarker(position) {
+    const marker = new google.maps.Marker({
+      position,
+      map,
+    });
+    console.log(marker.Clousure)
+  
+    markers.push(marker);
+}
+
+
+
 
 
 
 }
-
-
 
 

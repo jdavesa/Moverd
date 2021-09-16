@@ -4,12 +4,13 @@
     <img src={{userOne.avatarUrl}}>
   </div>
   <div class="user-info">
-    <h3>{{userOne.username}}</h3>
+    <h3>{{userOne.firstName}} {{userOne.lastName}}</h3>
     <h4>{{userOne.email}}</h4>
     <form action="/user-info" method="post">
-    <button>See and modify info</button>
+    <button>edit profile</button>
     </form>
-    <a id="button-menu-logout" {{!-- class="hide" --}} href="/logout">Logout</a> 
+    <a id="button-menu-logout" {{!-- class="hide" --}} href="/logout">logout</a>
+    <button id="marca" class="hide">marcar ubi</button>
   </div>  
 </div>
 
@@ -22,6 +23,11 @@
   <li id="n4">{{resultArr.[3]}}</li>
   <li id="n5">{{resultArr.[4]}}</li>
   <li id="n6">{{resultArr.[5]}}</li>
+  <li id="n7">{{resultArr.[6]}}</li>
+  <li id="n8">{{resultArr.[7]}}</li>
+  <li id="n8">{{resultArr.[8]}}</li>
+  <li id="n9">{{resultArr.[9]}}</li>
+  <li id="n10">{{resultArr.[10]}}</li>
 </ul>
 </div>
 

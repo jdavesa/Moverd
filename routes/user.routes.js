@@ -1,5 +1,10 @@
 const router = require("express").Router();
 const User = require("../models/User.model")
+const bcryptjs = require('bcryptjs');
+const saltRounds = 10;
+const {isLoggedIn, isLoggedOut} = require('../middleware/route.guard.js')
+
+
 
 const APIHandler = require("../public/js/APIHandler")
 const apiParalel = new APIHandler(41.357233, 2.145260)
@@ -8,14 +13,11 @@ const apiCiutatVella = new APIHandler(41.378796, 2.171962)
 const apiEixample = new APIHandler(41.391308, 2.146699)
 const apiSagrada = new APIHandler(41.411345, 2.165699)
 const apiPastor = new APIHandler(41.449040, 2.192275)
+const apiGuinardo = new APIHandler(41.436333, 2.152755)
+const apiSarria = new APIHandler(41.411211, 2.124733)
+const apiCorts = new APIHandler(41.379472,  2.103971)
+const apiSants = new APIHandler(41.369851,2.132886)
 
-
-
-
-const bcryptjs = require('bcryptjs');
-const saltRounds = 10;
-
-const {isLoggedIn, isLoggedOut} = require('../middleware/route.guard.js')
 
 
 
@@ -60,18 +62,7 @@ router.post('/user-page',(req,res,next)=>{
             res.redirect('/login')}
         else if(bcryptjs.compareSync(password, userOne.password))
         {
-            
             req.session.currentUser = userOne
-
-            /* let signupButton = document.getElementById('button-menu-signup')
-            let loginButton = document.getElementById('button-menu-login')
-            let userButton = document.getElementById('button-menu-user')
-            let logoutButton = document.getElementById('button-menu-logout')
-
-            signupButton.classList.add('class','hide')
-            loginButton.classList.add('class','hide')
-            userButton.removeAttribute('class','hide')
-            logoutButton.removeAttribute('class','hide') */
             
             res.render('user/user-page',{userOne})
         } else {
@@ -94,8 +85,8 @@ router.get('/logout', (req, res, next) => {
 router.get('/user-page',isLoggedIn,(req,res)=>{
     
     const userOne = req.session.currentUser
-    res.render('user/user-page',{userOne})
-/*     const resultArr = []
+    /* res.render('user/user-page',{userOne}) */
+    const resultArr = []
 
     apiParalel.getAirQuality().then(response => {
      
@@ -176,16 +167,71 @@ router.get('/user-page',isLoggedIn,(req,res)=>{
             return resultArr
          
     }).then((resultArr) => {
+        apiGuinardo.getAirQuality().then(response => {
+     
+            let pm10 = (response.data.list[0].components.pm10)*100/20
+            let pm25 = (response.data.list[0].components.pm2_5)*100/10
+            let o3 = (response.data.list[0].components.o3)*100/80
+            let no2 = (response.data.list[0].components.no2)*100/40
+            
+           
+            const result7 = (((pm10+pm25+o3+no2)/4)*0.5)
+            resultArr[6] = result7
+            return resultArr
+         
+    }).then((resultArr) => {
+        apiSarria.getAirQuality().then(response => {
+     
+            let pm10 = (response.data.list[0].components.pm10)*100/20
+            let pm25 = (response.data.list[0].components.pm2_5)*100/10
+            let o3 = (response.data.list[0].components.o3)*100/80
+            let no2 = (response.data.list[0].components.no2)*100/40
+            
+           
+            const result8 = (((pm10+pm25+o3+no2)/4)*0.5)
+            resultArr[7] = result8
+            return resultArr
+         
+    }).then((resultArr) => {
+        apiCorts.getAirQuality().then(response => {
+     
+            let pm10 = (response.data.list[0].components.pm10)*100/20
+            let pm25 = (response.data.list[0].components.pm2_5)*100/10
+            let o3 = (response.data.list[0].components.o3)*100/80
+            let no2 = (response.data.list[0].components.no2)*100/40
+            
+           
+            const result9 = (((pm10+pm25+o3+no2)/4)*0.5)
+            resultArr[8] = result9
+            return resultArr
+         
+    }).then((resultArr) => {
+        apiSants.getAirQuality().then(response => {
+     
+            let pm10 = (response.data.list[0].components.pm10)*100/20
+            let pm25 = (response.data.list[0].components.pm2_5)*100/10
+            let o3 = (response.data.list[0].components.o3)*100/80
+            let no2 = (response.data.list[0].components.no2)*100/40
+            
+           
+            const result10 = (((pm10+pm25+o3+no2)/4)*0.5)
+            resultArr[9] = result10
+            return resultArr
+         
+    }).then((resultArr) => {
         console.log(resultArr)
 
         res.render('user/user-page',{userOne, resultArr})
     })
-    
+})
+})
+})
+})   
 })
 })
 })
 })
-}) */
+})
 })
 
 
@@ -203,9 +249,9 @@ router.post('/user-info',isLoggedIn,(req,res)=>{
 
 router.post('/user-update',isLoggedIn,(req,res)=>{
     const userId = req.session.currentUser._id
-    const {firstName, secondName, email, username, avatarUrl} = req.body
+    const {firstName, lastName, email, username, avatarUrl} = req.body
 
-    User.findByIdAndUpdate(userId,{firstName, secondName, email, username, avatarUrl},{new:true})
+    User.findByIdAndUpdate(userId,{firstName, lastName, email, username, avatarUrl},{new:true})
     .then(result =>{
         req.session.currentUser = result
         res.redirect('/user-page')
