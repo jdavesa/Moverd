@@ -1,5 +1,12 @@
 
 <div class="signupContainer">
+  
+{{#if errorMessage}}
+
+    <p class="error">{{errorMessage}}</p>
+
+{{/if}}
+
 <form id="form-style-sign" class="signup" action="/signup" method="post">
  
     <input type="text" name="firstName" placeholder="first name"/>

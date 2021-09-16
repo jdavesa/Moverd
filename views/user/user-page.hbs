@@ -6,6 +6,17 @@
   <div class="user-info">
     <h3>{{userOne.firstName}} {{userOne.lastName}}</h3>
     <h4>{{userOne.email}}</h4>
+    <div class="blue-button">
+    <a id="refresh-map" href="/user-page">Refresh</a>
+    </div>
+    <div class="hiden-buttons">
+      <a id="aqi-list-off">close list</a>
+      <a id="aqi-list-on" class="hide">show list</a>
+    </div>
+    <div class="hiden-buttons">
+      <a id="aqi-lgn-off">close legend</a>
+      <a id="aqi-lgn-on" class="hide">show legend</a>
+    </div>
     <form action="/user-info" method="post">
     <button>edit profile</button>
     </form>
@@ -14,7 +25,72 @@
   </div>  
 </div>
 
+
+<div id="aqi-container">
+<div  class="data-container">
+
+  <div>
+    <h2>area</h2>
+    <ul>
+      <li id="a1" onclick="myFunction()">Paral·lel/Montjuic</li>
+      <li id="a2">Ciutat Vella</li>
+      <li id="a3">Poblenou</li>
+      <li id="a4">Barceloneta</li>
+      <li id="a5">Eixample</li>
+      <li id="a6">Sagrada Familia</li>
+      <li id="a7">Sant Andreu</li>
+      <li id="a8">Horta/Guinardó</li>
+      <li id="a9">Sarria/Sant Gervasi</li>
+      <li id="a10">Les Corts</li>
+      <li id="a11">Sants</li>
+   </ul>
+  </div>
+
+
+
+
+  <div class="aqi-values">
+    <h2>aqi</h2>
+    <ul>
+    <li id="s1"></li>
+    <li id="s2"></li>
+    <li id="s3"></li>
+    <li id="s4"></li>
+    <li id="s5"></li>
+    <li id="s6"></li>
+    <li id="s7"></li>
+    <li id="s8"></li>
+    <li id="s8"></li>
+    <li id="s9"></li>
+    <li id="s10"></li>
+    <li id="s11"></li>
+    </ul>
+  </div>
+  
+
+</div>
+
+</div>
+
+
+<div id="legend-container">
+    <div class="legend-container">
+      <div class="legend-logo"><img src="images/logo-legend.png"></div>
+      <div class="legend-colors"></div>
+      
+    </div>
+
+  </div>
+
+
+
+
+<div class="logo-botones">
+  <img src="images/logos-botones.png">
+</div>
+
 <div id="map"></div>
+
 
 <ul class = 'hide'>
   <li id="n1">{{resultArr.[0]}}</li>
@@ -25,11 +101,13 @@
   <li id="n6">{{resultArr.[5]}}</li>
   <li id="n7">{{resultArr.[6]}}</li>
   <li id="n8">{{resultArr.[7]}}</li>
-  <li id="n8">{{resultArr.[8]}}</li>
-  <li id="n9">{{resultArr.[9]}}</li>
-  <li id="n10">{{resultArr.[10]}}</li>
+  <li id="n9">{{resultArr.[8]}}</li>
+  <li id="n10">{{resultArr.[9]}}</li>
+  <li id="n11">{{resultArr.[10]}}</li>
+  
 </ul>
 </div>
+
 
 
 

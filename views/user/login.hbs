@@ -1,5 +1,11 @@
 <div class="loginContainer">
 
+    {{#if errorMessage}}
+
+        <p class="error">{{errorMessage}}</p>
+
+    {{/if}}
+
     
     <form id="form-style" class="login" action="/user-page" method="post">
 
