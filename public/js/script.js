@@ -751,10 +751,10 @@ function init(){
 
   const areaEixample = new google.maps.Polygon({
     paths: eixampleCoords,
-    strokeColor: colorLevel(n4),
+    strokeColor: colorLevel(n5),
     strokeOpacity: 0.8,
     strokeWeight: 1,
-    fillColor: colorLevel(n4),
+    fillColor: colorLevel(n5),
     fillOpacity: 0.40,
   });
 
@@ -812,10 +812,10 @@ function init(){
 
   const areaSagrada = new google.maps.Polygon({
     paths: sagradaCoords,
-    strokeColor: colorLevel(n5),
+    strokeColor: colorLevel(n6),
     strokeOpacity: 0.8,
     strokeWeight: 1,
-    fillColor: colorLevel(n5),
+    fillColor: colorLevel(n6),
     fillOpacity: 0.40,
   });
 
@@ -871,10 +871,10 @@ function init(){
 
   const areaPastor = new google.maps.Polygon({
     paths: pastorCoords,
-    strokeColor: colorLevel(n6),
+    strokeColor: colorLevel(n7),
     strokeOpacity: 0.8,
     strokeWeight: 1,
-    fillColor: colorLevel(n6),
+    fillColor: colorLevel(n7),
     fillOpacity: 0.40,
   });
 
@@ -931,10 +931,10 @@ function init(){
 
   const areaGuinardo = new google.maps.Polygon({
     paths: guinardoCoords,
-    strokeColor: colorLevel(n7),
+    strokeColor: colorLevel(n8),
     strokeOpacity: 0.8,
     strokeWeight: 1,
-    fillColor: colorLevel(n7),
+    fillColor: colorLevel(n8),
     fillOpacity: 0.40,
   });
 
@@ -986,10 +986,10 @@ function init(){
 
   const areaSarria = new google.maps.Polygon({
     paths: sarriaCoords,
-    strokeColor: colorLevel(n8),
+    strokeColor: colorLevel(n9),
     strokeOpacity: 0.8,
     strokeWeight: 1,
-    fillColor: colorLevel(n8),
+    fillColor: colorLevel(n9),
     fillOpacity: 0.40,
   });
 
@@ -1043,10 +1043,10 @@ function init(){
 
   const areaCorts = new google.maps.Polygon({
     paths: cortsCoords,
-    strokeColor: colorLevel(n9),
+    strokeColor: colorLevel(n10),
     strokeOpacity: 0.8,
     strokeWeight: 1,
-    fillColor: colorLevel(n9),
+    fillColor: colorLevel(n10),
     fillOpacity: 0.40,
   });
 
@@ -1093,10 +1093,10 @@ function init(){
 
   const areaSants = new google.maps.Polygon({
     paths: santsCoords,
-    strokeColor: colorLevel(n10),
+    strokeColor: colorLevel(n11),
     strokeOpacity: 0.8,
     strokeWeight: 1,
-    fillColor: colorLevel(n10),
+    fillColor: colorLevel(n11),
     fillOpacity: 0.40,
   });
 
